@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const SignIn = () => {
+  const[email,setEmail] = useState('')
+  const[password,setPassword] = useState('')
+  const login = ()=>{
+    
+  }
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12 dark:bg-gray-600">
       <div className="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
@@ -8,7 +13,7 @@ const SignIn = () => {
           Sign In
         </h1>
         <div className="bg-amber-300 shadow w-full rounded-lg divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
-          <form >
+          <form onSubmit={login}>
           <div className="px-5 py-7">
             <label className="font-semibold text-sm text-gray-600 pb-1 block dark:text-gray-50 ">
               E-mail
@@ -16,6 +21,7 @@ const SignIn = () => {
             <input
               type="text"
               name="email"
+              onChange={(e)=>{setEmail(e.target.value)}}
               placeholder="exemple@...com"
               className="border border-amber-600 bg-amber-300 rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full dark:bg-gray-600 dark:text-gray-50"
             />
@@ -25,6 +31,7 @@ const SignIn = () => {
             <input
               type="password"
               name="password"
+              onChange={(e)=>{setPassword(e.target.value)}}
               placeholder="****************"
               className="border border-amber-600 bg-amber-300  rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full dark:bg-gray-600 dark:text-gray-50"
             />

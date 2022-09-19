@@ -10,9 +10,16 @@ const getAllProducts = async () =>{
         headers : authHeader()
     })
 }
-
+export const axiosOne = axios.create({
+    baseURL: 'http://localhost:8000/api'
+})
+const getProductsPage = async (pageParam=1) =>{
+    const response = await axiosOne.get(`/products?page=${pageParam}`)
+    return response.data
+}
 const ProductService ={
     getAllProducts,
+    getProductsPage
 }
 
 export default ProductService

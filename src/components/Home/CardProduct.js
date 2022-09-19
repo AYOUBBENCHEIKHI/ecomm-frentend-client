@@ -4,8 +4,8 @@ import { useCart } from "react-use-cart";
 const CardProduct = ({ product }) => {
   const { addItem } = useCart();
   return (
-    <div className="w-full max-w-sm   bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <Link to={"/"}>
+    <div className="w-full h-full max-w-sm   bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <Link to={"/"}  className=" ">
         <img className="p-8 rounded-t-lg" src={`http://localhost:8000/imageProducts/${product.img_url}`} alt="" />
       </Link>
       <div className="px-5 pb-5">
