@@ -1,11 +1,29 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import UserService from '../service/UserService';
 
 const SignIn = () => {
   const[email,setEmail] = useState('')
   const[password,setPassword] = useState('')
-  const login = ()=>{
-    
-  }
+  
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await UserService.login(email, password).then(
+        () => {
+          navigate("/");
+        window.location.reload();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12 dark:bg-gray-600">
       <div className="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
@@ -13,7 +31,7 @@ const SignIn = () => {
           Sign In
         </h1>
         <div className="bg-amber-300 shadow w-full rounded-lg divide-y divide-gray-200 dark:bg-gray-700 dark:divide-gray-600">
-          <form onSubmit={login}>
+          <form onSubmit={handleLogin}>
           <div className="px-5 py-7">
             <label className="font-semibold text-sm text-gray-600 pb-1 block dark:text-gray-50 ">
               E-mail
